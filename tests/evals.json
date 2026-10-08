@@ -1,0 +1,50 @@
+{
+  "skill_name": "license-check",
+  "evaluation_type": "paired_single_run",
+  "cases": [
+    {
+      "id": "a",
+      "prompt": "检查工程的第三方声明是否遗漏，给出是否需要修改的结论和证据。",
+      "scenario": "附加索引只列包级许可，但发布保留包内完整的第三方声明和许可原文。",
+      "criteria": [
+        "发现内嵌 mini-lib 2.0.0，引用 ThirdPartyNotices.txt 和 lib/bundle.js.LICENSE",
+        "区分附加索引未列出组件与分发时原始声明缺失；不把保留完整原文的分发判为已确认义务遗漏",
+        "结合 README/publish.json 判断分发内容，并将未核查实际产物作为限制"
+      ],
+      "files": [
+        "tests/fixtures/evaluation/case-a"
+      ]
+    },
+    {
+      "id": "b",
+      "prompt": "工程调用 FFmpeg，需要把工程许可证改成 GPL 吗？",
+      "scenario": "源码通过独立进程调用用户安装的 FFmpeg，工程仅分发源码。",
+      "criteria": [
+        "识别 spawn 独立进程和用户单独安装 FFmpeg 的事实，提供文件证据",
+        "不因调用 FFmpeg 就要求整个工程改为 GPL，也不因进程边界就宣称无条件兼容",
+        "区分二进制许可证、构建配置及未来随包分发所需的单独核对"
+      ],
+      "files": [
+        "tests/fixtures/evaluation/case-b"
+      ]
+    },
+    {
+      "id": "c",
+      "prompt": "工程准备发布，许可证都通过了吗？",
+      "scenario": "源码调用 FFmpeg，未说明交付形式及是否包含其二进制。",
+      "criteria": [
+        "不将 npm 取证或包级 MIT 判成所有许可证均已通过",
+        "明确询问交付方式及 FFmpeg 是否打包，等待答案期间保留未确认",
+        "说明本地扫描未覆盖的二进制及最终产物范围"
+      ],
+      "files": [
+        "tests/fixtures/evaluation/case-c"
+      ]
+    }
+  ],
+  "limitations": [
+    "每种条件仅一次运行",
+    "同一 Agent 顺序处理三个案例，案例间不完全独立",
+    "不衡量长期稳定性或实际法律合规认证"
+  ]
+}

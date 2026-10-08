@@ -1,0 +1,159 @@
+{
+  "evaluation_date": "2026-10-04",
+  "grading_method": "主 Agent 逐项审阅完整报告，不采用关键词匹配评分",
+  "input_files_unchanged": true,
+  "results": [
+    {
+      "variant": "with-skill",
+      "passed": 9,
+      "total": 9,
+      "cases": [
+        {
+          "id": "a",
+          "report": "tests/evaluation-reports/with-skill/a.md",
+          "report_characters": 2273,
+          "assertions": [
+            {
+              "text": "发现内嵌 mini-lib 2.0.0，引用 ThirdPartyNotices.txt 和 lib/bundle.js.LICENSE",
+              "passed": true,
+              "evidence": "组件表中列出 mini-lib 2.0.0、ThirdPartyNotices.txt 和 bundle.js.LICENSE。"
+            },
+            {
+              "text": "区分附加索引未列出组件与分发时原始声明缺失；不把保留完整原文的分发判为已确认义务遗漏",
+              "passed": true,
+              "evidence": "结论明确将索引补全视为可选，并以完整目录保留原始声明为条件。"
+            },
+            {
+              "text": "结合 README/publish.json 判断分发内容，并将未核查实际产物作为限制",
+              "passed": true,
+              "evidence": "分发边界行核对 README/publish.json，未确认项要求检查最终归档。"
+            }
+          ]
+        },
+        {
+          "id": "b",
+          "report": "tests/evaluation-reports/with-skill/b.md",
+          "report_characters": 2364,
+          "assertions": [
+            {
+              "text": "识别 spawn 独立进程和用户单独安装 FFmpeg 的事实，提供文件证据",
+              "passed": true,
+              "evidence": "证据表引用 src/export.mjs 的 spawn 与 README 用户自行安装说明。"
+            },
+            {
+              "text": "不因调用 FFmpeg 就要求整个工程改为 GPL，也不因进程边界就宣称无条件兼容",
+              "passed": true,
+              "evidence": "结论无需改 GPL，同时明确不是只要 spawn 就永远免责。"
+            },
+            {
+              "text": "区分二进制许可证、构建配置及未来随包分发所需的单独核对",
+              "passed": true,
+              "evidence": "适用条件段区分未来捆绑构建、对应源码及库链接情形。"
+            }
+          ]
+        },
+        {
+          "id": "c",
+          "report": "tests/evaluation-reports/with-skill/c.md",
+          "report_characters": 2686,
+          "assertions": [
+            {
+              "text": "不将 npm 取证或包级 MIT 判成所有许可证均已通过",
+              "passed": true,
+              "evidence": "结论拒绝全部通过，明确 npm 本地证据不覆盖 FFmpeg。"
+            },
+            {
+              "text": "明确询问交付方式及 FFmpeg 是否打包，等待答案期间保留未确认",
+              "passed": true,
+              "evidence": "待确认问题 1、2 询问发布形态及 FFmpeg 如何提供。"
+            },
+            {
+              "text": "说明本地扫描未覆盖的二进制及最终产物范围",
+              "passed": true,
+              "evidence": "未确认表列出缺少发布配置、产物及外部组件信息。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "variant": "without-skill",
+      "passed": 9,
+      "total": 9,
+      "cases": [
+        {
+          "id": "a",
+          "report": "tests/evaluation-reports/without-skill/a.md",
+          "report_characters": 1770,
+          "assertions": [
+            {
+              "text": "发现内嵌 mini-lib 2.0.0，引用 ThirdPartyNotices.txt 和 lib/bundle.js.LICENSE",
+              "passed": true,
+              "evidence": "本地证据表列出 mini-lib 2.0.0 和两个原始声明文件。"
+            },
+            {
+              "text": "区分附加索引未列出组件与分发时原始声明缺失；不把保留完整原文的分发判为已确认义务遗漏",
+              "passed": true,
+              "evidence": "结论区分索引不完整与分发义务缺失，补索引为可选改善。"
+            },
+            {
+              "text": "结合 README/publish.json 判断分发内容，并将未核查实际产物作为限制",
+              "passed": true,
+              "evidence": "README/publish.json 为依据，最终归档保留情况仍待验证。"
+            }
+          ]
+        },
+        {
+          "id": "b",
+          "report": "tests/evaluation-reports/without-skill/b.md",
+          "report_characters": 1896,
+          "assertions": [
+            {
+              "text": "识别 spawn 独立进程和用户单独安装 FFmpeg 的事实，提供文件证据",
+              "passed": true,
+              "evidence": "本地证据表确认 spawn 普通进程调用及 README 独立安装与仅源码分发。"
+            },
+            {
+              "text": "不因调用 FFmpeg 就要求整个工程改为 GPL，也不因进程边界就宣称无条件兼容",
+              "passed": true,
+              "evidence": "条款推理注明不是只要 spawn 就绝对豁免。"
+            },
+            {
+              "text": "区分二进制许可证、构建配置及未来随包分发所需的单独核对",
+              "passed": true,
+              "evidence": "建议段要求未来捆绑时核对版本、构建选项及对应义务。"
+            }
+          ]
+        },
+        {
+          "id": "c",
+          "report": "tests/evaluation-reports/without-skill/c.md",
+          "report_characters": 2478,
+          "assertions": [
+            {
+              "text": "不将 npm 取证或包级 MIT 判成所有许可证均已通过",
+              "passed": true,
+              "evidence": "结论为发布合规未确认，拒绝以锁文件 MIT 给出发布许可。"
+            },
+            {
+              "text": "明确询问交付方式及 FFmpeg 是否打包，等待答案期间保留未确认",
+              "passed": true,
+              "evidence": "关闭条件 1、2 询问发布内容和 FFmpeg 供应边界。"
+            },
+            {
+              "text": "说明本地扫描未覆盖的二进制及最终产物范围",
+              "passed": true,
+              "evidence": "未确认段覆盖最终材料、二进制构建和目录外组件。"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "每组仅一次运行，不能据此证明长期优势",
+    "同一评测 Agent 顺序处理三个案例",
+    "未记录可靠的耗时或 token 用量，不比较性能",
+    "与 Skill 无关的测试指令统一要求只读，不评估自发授权行为"
+  ]
+}
