@@ -46,5 +46,63 @@
     "每种条件仅一次运行",
     "同一 Agent 顺序处理三个案例，案例间不完全独立",
     "不衡量长期稳定性或实际法律合规认证"
+  ],
+  "language_cases": [
+    {
+      "id": "zh-default",
+      "prompt": "使用 license-check 检查这个工程的第三方声明是否遗漏，给出结论、证据和未确认项，并摘录 mini-lib 许可文件中的版权行。",
+      "expected_language": "zh",
+      "files": [
+        "tests/fixtures/evaluation/case-a"
+      ],
+      "criteria": [
+        "分析正文使用 expected_language 指定语言，引用原文不计入正文语言判断",
+        "widget 1.0.0、mini-lib 2.0.0 和证据路径保持原样",
+        "版权摘录与 mini-lib 许可原文逐字一致",
+        "结论区分附加索引遗漏与实际声明缺失，并保留最终产物未验证项"
+      ]
+    },
+    {
+      "id": "en-default",
+      "prompt": "Use license-check to review this project's third-party notices. Provide conclusions, evidence and unresolved items, and quote the copyright line from mini-lib's license file.",
+      "expected_language": "en",
+      "files": [
+        "tests/fixtures/evaluation/case-a"
+      ],
+      "criteria": [
+        "分析正文使用 expected_language 指定语言，引用原文不计入正文语言判断",
+        "widget 1.0.0、mini-lib 2.0.0 和证据路径保持原样",
+        "版权摘录与 mini-lib 许可原文逐字一致",
+        "结论区分附加索引遗漏与实际声明缺失，并保留最终产物未验证项"
+      ]
+    },
+    {
+      "id": "zh-to-en",
+      "prompt": "使用 license-check 检查这个工程的第三方声明是否遗漏。请用英文写报告，给出结论、证据和未确认项，并摘录 mini-lib 许可文件中的版权行。",
+      "expected_language": "en",
+      "files": [
+        "tests/fixtures/evaluation/case-a"
+      ],
+      "criteria": [
+        "分析正文使用 expected_language 指定语言，引用原文不计入正文语言判断",
+        "widget 1.0.0、mini-lib 2.0.0 和证据路径保持原样",
+        "版权摘录与 mini-lib 许可原文逐字一致",
+        "结论区分附加索引遗漏与实际声明缺失，并保留最终产物未验证项"
+      ]
+    },
+    {
+      "id": "en-to-zh",
+      "prompt": "Use license-check to review this project's third-party notices. Write the report in Chinese, provide conclusions, evidence and unresolved items, and quote the copyright line from mini-lib's license file.",
+      "expected_language": "zh",
+      "files": [
+        "tests/fixtures/evaluation/case-a"
+      ],
+      "criteria": [
+        "分析正文使用 expected_language 指定语言，引用原文不计入正文语言判断",
+        "widget 1.0.0、mini-lib 2.0.0 和证据路径保持原样",
+        "版权摘录与 mini-lib 许可原文逐字一致",
+        "结论区分附加索引遗漏与实际声明缺失，并保留最终产物未验证项"
+      ]
+    }
   ]
 }

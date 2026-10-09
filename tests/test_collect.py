@@ -182,6 +182,9 @@ class CollectTests(unittest.TestCase):
         installed = self.root / 'installed' / 'license-check'
         shutil.copytree(SKILL, installed, ignore=shutil.ignore_patterns('__pycache__', '*.pyc'))
         self.assertEqual({p.name for p in installed.iterdir()}, {'SKILL.md', 'LICENSE', 'scripts', 'references'})
+        self.assertEqual({p.relative_to(installed).as_posix() for p in installed.rglob('*') if p.is_file()},
+                         {'SKILL.md', 'LICENSE', 'scripts/collect.py',
+                          'references/report-format.md', 'references/review-guide.md'})
         self.assertEqual((installed / 'LICENSE').read_bytes(), (SKILL.parents[1] / 'LICENSE').read_bytes())
         for relative in re.findall(r'\]\(([^)]+)\)', (installed / 'SKILL.md').read_text()):
             self.assertTrue((installed / relative).is_file(), relative)

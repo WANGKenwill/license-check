@@ -1,0 +1,105 @@
+{
+  "date": "2026-10-09",
+  "fixture": "tests/fixtures/evaluation/case-a",
+  "method": "两个无主会话历史的评测 Agent，各收到两个目标输出语言相同的请求；主 Agent 审阅四份报告的正文语言、证据和结论。",
+  "fixture_unchanged": true,
+  "results": [
+    {
+      "id": "zh-default",
+      "expected_language": "zh",
+      "report": "tests/evaluation-reports/language/zh-default.md",
+      "assertions": [
+        {
+          "criterion": "分析正文使用 expected_language 指定语言，引用原文不计入正文语言判断",
+          "passed": true
+        },
+        {
+          "criterion": "widget 1.0.0、mini-lib 2.0.0 和证据路径保持原样",
+          "passed": true
+        },
+        {
+          "criterion": "版权摘录与 mini-lib 许可原文逐字一致",
+          "passed": true
+        },
+        {
+          "criterion": "结论区分附加索引遗漏与实际声明缺失，并保留最终产物未验证项",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "en-default",
+      "expected_language": "en",
+      "report": "tests/evaluation-reports/language/en-default.md",
+      "assertions": [
+        {
+          "criterion": "分析正文使用 expected_language 指定语言，引用原文不计入正文语言判断",
+          "passed": true
+        },
+        {
+          "criterion": "widget 1.0.0、mini-lib 2.0.0 和证据路径保持原样",
+          "passed": true
+        },
+        {
+          "criterion": "版权摘录与 mini-lib 许可原文逐字一致",
+          "passed": true
+        },
+        {
+          "criterion": "结论区分附加索引遗漏与实际声明缺失，并保留最终产物未验证项",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "zh-to-en",
+      "expected_language": "en",
+      "report": "tests/evaluation-reports/language/zh-to-en.md",
+      "assertions": [
+        {
+          "criterion": "分析正文使用 expected_language 指定语言，引用原文不计入正文语言判断",
+          "passed": true
+        },
+        {
+          "criterion": "widget 1.0.0、mini-lib 2.0.0 和证据路径保持原样",
+          "passed": true
+        },
+        {
+          "criterion": "版权摘录与 mini-lib 许可原文逐字一致",
+          "passed": true
+        },
+        {
+          "criterion": "结论区分附加索引遗漏与实际声明缺失，并保留最终产物未验证项",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "en-to-zh",
+      "expected_language": "zh",
+      "report": "tests/evaluation-reports/language/en-to-zh.md",
+      "assertions": [
+        {
+          "criterion": "分析正文使用 expected_language 指定语言，引用原文不计入正文语言判断",
+          "passed": true
+        },
+        {
+          "criterion": "widget 1.0.0、mini-lib 2.0.0 和证据路径保持原样",
+          "passed": true
+        },
+        {
+          "criterion": "版权摘录与 mini-lib 许可原文逐字一致",
+          "passed": true
+        },
+        {
+          "criterion": "结论区分附加索引遗漏与实际声明缺失，并保留最终产物未验证项",
+          "passed": true
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "每个场景仅一份报告，未证明跨模型或跨 runtime 的稳定性",
+    "同一 Agent 同时收到两个请求，且两份报告相同；不能视为四次独立调用",
+    "验证范围是 Agent 报告语言，采集器诊断仍为中文，JSON 字段保持不变"
+  ]
+}
